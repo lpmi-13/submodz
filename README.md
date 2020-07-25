@@ -16,7 +16,7 @@ This is a chance to practice what to do in one of those cases.
 It's a simple app that we have, we just want to start up a local server and show the
 chances that it's gonna be awesome in that city.
 
-```
+```bash
 npm install
 node index.js
 ```
@@ -29,13 +29,13 @@ Because the predictions are just a bit too rosy, let's add a transform function 
 
 Fork the repo at https://github.com/lpmi-13/submodule-transform to your github account, and then clone the submodule to a different local folder so we can work with it later:
 
-```
+```bash
 git clone git@github.com:YOUR_USER_NAME/submodule-transform
 ```
 
 now we add the remote repo as a submodule into this main repository, so we can track changes in it, like so:
 
-```
+```bash
 git submodule add git@YOUR_USER_NAME/submodule-transform transform
 ```
 
@@ -63,32 +63,32 @@ Changes to be committed:
 
 And then let's add this new function into our `index.js`. Add
 
-```
+```js
 const transform = require('./transform/transform');
 ```
 
 to the top of the file, and change
 
-```
+```js
 res.send(`the chances of awesomeness in ${city} are ${percentage}`);
 ```
 
 to
 
-```
+```js
 res.send(`the chances of awesomeness in ${city} are ${transform(percentage)}`);
 ```
 
 Then run the server and see what the chances of awesomeness in a random city are:
 
-```
+```bash
 curl localhost:3000/london
 // the predicted awesomeness in london is 1.5%
 ```
 
 you can also see what commit the submodule is pointing to by typing:
 
-```
+```bash
 git submodule
 ```
 
@@ -112,19 +112,19 @@ First, change directories into the folder you cloned the submodule to, and updat
 
 change:
 
-```
+```js
 const transform = inputNumber => inputNumber * 0.25;
 ```
 
 to something like:
 
-```
+```js
 const transform = inputNumber => inputNumber * 1000;
 ```
 
 Now we just commit that change and push it back to your forked remote, so it will show as updated in our main repo:
 
-```
+```bash
 git add transform.js
 git commit -m 'make the percentage 1000 times bigger, for reasons!'
 git push origin master
@@ -134,7 +134,7 @@ git push origin master
 
 back in your main repo, if you type
 
-```
+```bash
 git submodule update --remote
 ```
 
@@ -147,14 +147,14 @@ Submodule path 'transform': checked out '12f80cfb707459bac790fd50d9982706a191303
 
 and when you run the server locally, and try to find out the predicted awesomeness in a city, it should be some ridiculously too high number:
 
-```
+```bash
 curl localhost:3000/chicago
 // the predicted awesomeness in chicago is 3200%
 ```
 
 the only last slight difference from normal git updates is that when you type
 
-```
+```bash
 git status
 ```
 
@@ -175,7 +175,7 @@ Now to finish off the exercise, add and commit that, and we're all done!
 
 for the curious, your git history (with `git log -p`) should look like this:
 
-```
+```diff
 diff --git a/transform b/transform
 index 9399af5..12f80cf 160000
 --- a/transform
