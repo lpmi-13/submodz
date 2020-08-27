@@ -36,7 +36,7 @@ git clone git@github.com:YOUR_USER_NAME/submodule-transform
 now we add the remote repo as a submodule into this main repository, so we can track changes in it, like so:
 
 ```
-git submodule add git@YOUR_USER_NAME/submodule-transform transform
+git submodule add git@github.com:YOUR_USER_NAME/submodule-transform transform
 ```
 
 you should see some terminal output like the following:
